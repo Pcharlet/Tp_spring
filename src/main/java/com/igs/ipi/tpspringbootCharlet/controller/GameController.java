@@ -5,6 +5,7 @@ import com.igs.ipi.tpspringbootCharlet.Service.GameService;
 import com.igs.ipi.tpspringbootCharlet.Service.PartieEnCours;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,10 +34,23 @@ public class GameController {
 
     @GetMapping("/game")
     public ModelAndView game(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView MaV = new ModelAndView("game");
+        ModelAndView m = new ModelAndView("game");
         GameModel gameModel = PartieEnCours.getGameModel();
-        MaV.addObject("game", gameModel);
-        return MaV;
+        m.addObject("game", gameModel);
+        return m;
     }
 
+
+
+    @GetMapping("game/drop/{NC]")
+    public ModelAndView drop(@PathVariable("NC") Integer numColonne){
+
+        ModelAndView m =new ModelAndView("game");
+        GameModel gameModel = PartieEnCours.getGameModel();
+
+        gameModel.add(numColonne);
+        m.addObject("game", gameModel);
+
+        return m;
+    }
 }

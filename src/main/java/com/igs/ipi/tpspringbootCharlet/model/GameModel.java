@@ -5,6 +5,8 @@ public class GameModel {
     private static final int LARGEUR = 7;
     private static final int HAUTEUR = 6;
 
+    private int numGagnant = 0;
+    private boolean tour;
     private String nom1;
 
     private String nom2;
@@ -18,6 +20,26 @@ public class GameModel {
             }
          }
     }
+
+
+    // je n'est pas réussi à faire la fonction en totalité je me suis plus qu'inspirer de votre correction
+    public void add(Integer index) {
+        if (numGagnant != 0) {
+            throw new IllegalStateException("La partie est déjà terminée");
+        }
+        // h=0 est la ligne du haut, on va itérer sur la hateur en sens inverse pour cherche une place libre en bas
+        for (int h = jetons.length - 1; h >= 0; h--) {
+            if (jetons[h][index] == Jeton.VIDE) {
+                Jeton jeton = tour ? Jeton.ROUGE : Jeton.JAUNE;
+                jetons[h][index] = jeton;
+                tour = !tour;
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Aucune place disponible pour un jeton en index " + index);
+    }
+
+
 
 
     public Jeton[][] getJetons() {
