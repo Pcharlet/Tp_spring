@@ -1,4 +1,4 @@
-package com.igs.ipi.tpspringboot.Charlet;
+package com.igs.ipi.tpspringbootCharlet;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationTests {
+public class TpSpringbootCharletApplicationTests {
 
 	@Test
 	public void contextLoads() {
