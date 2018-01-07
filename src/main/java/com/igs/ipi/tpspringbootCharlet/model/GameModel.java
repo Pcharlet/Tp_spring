@@ -20,7 +20,6 @@ public class GameModel {
     }
 
 
-
     public Jeton[][] getJetons() {
         return jetons;
     }

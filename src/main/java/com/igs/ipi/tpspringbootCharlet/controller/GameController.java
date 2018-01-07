@@ -2,7 +2,9 @@ package com.igs.ipi.tpspringbootCharlet.controller;
 
 
 import com.igs.ipi.tpspringbootCharlet.Service.GameService;
+import com.igs.ipi.tpspringbootCharlet.Service.PartieEnCours;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,4 +30,13 @@ public class GameController {
         m.addObject("game", gameModel);
         return m;
     }
+
+    @GetMapping("/game")
+    public ModelAndView game(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView MaV = new ModelAndView("game");
+        GameModel gameModel = PartieEnCours.getGameModel();
+        MaV.addObject("game", gameModel);
+        return MaV;
+    }
+
 }
